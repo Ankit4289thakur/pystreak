@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and learning progress",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "xp": { "type": "integer" },
+        "streak": { "type": "integer" },
+        "lastActive": { "type": "string", "format": "date-time" },
+        "level": { "type": "integer" },
+        "completedLessons": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["uid", "email"]
+    },
+    "Lesson": {
+      "title": "Lesson",
+      "description": "Content for each Python topic",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "module": { "type": "string" },
+        "day": { "type": "integer" },
+        "content": { "type": "string" },
+        "difficulty": { "type": "string", "enum": ["Easy", "Medium", "Hard"] },
+        "xpReward": { "type": "integer" }
+      }
+    },
+    "Streak": {
+      "title": "Streak",
+      "description": "Daily activity log for streaks",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "activity": { "type": "boolean" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User private profile and progress"
+    },
+    "/lessons/{lessonId}": {
+      "schema": "Lesson",
+      "description": "Learning content"
+    },
+    "/users/{userId}/streaks/{date}": {
+      "schema": "Streak",
+      "description": "Daily activity logs"
+    }
+  }
+}

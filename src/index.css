@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Playfair Display", serif;
+  
+  --color-primary: #4F46E5;
+  --color-primary-foreground: #ffffff;
+  --color-accent: #FFD60A;
+  --color-sidebar: #1E1B4B;
+  --color-card-bg: #ffffff;
+  --color-page-bg: #F8FAFC;
+}
+
+@layer base {
+  body {
+    @apply bg-[family-name:--color-page-bg] text-zinc-900 font-sans antialiased;
+  }
+}
+
+.card {
+  @apply bg-white rounded-[24px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] p-6 overflow-hidden;
+}
+
+.card-vibrant {
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  @apply text-white;
+}
+
+.card-streak {
+  @apply bg-[#FFF7ED] border-2 border-[#FED7AA] rounded-[24px] p-6;
+}
+
+.stat-pill {
+  @apply bg-white px-4 py-2 rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.05)] border border-zinc-100 flex items-center gap-2 font-semibold text-sm text-[#1E293B];
+}
+
+.btn-accent {
+  @apply bg-[#FFD60A] text-[#1E1B4B] px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all active:scale-95;
+}
+
+.code-preview {
+  @apply bg-[#1E293B] rounded-xl p-4 font-mono text-[13px] text-[#CBD5E1] mt-4;
+}
